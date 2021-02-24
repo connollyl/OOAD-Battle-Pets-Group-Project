@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorPane_BattlePets" minHeight="600.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/10.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLPresenter">
+	<children>
+		<AnchorPane fx:id="panel_SetupScreen" minHeight="600.0" minWidth="1000.0" style="-fx-background-color: #151516;">
+         <children>
+            <ImageView fx:id="btn_BackToTitle" fitHeight="60.0" fitWidth="60.0" layoutX="25.0" layoutY="518.0" onMouseClicked="#handleImageButtonAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Resources/backArrow.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <TextField fx:id="txtF_NumPets" layoutX="23.0" layoutY="34.0" onKeyPressed="#handleTextFieldAction" prefHeight="52.0" prefWidth="300.0" promptText="Enter Number Of Pets Here" style="-fx-text-inner-color: #ffffff; -fx-background-color: #3e3e40; -fx-background-radius: 30; -fx-border-color: #939393; -fx-border-radius: 30; -fx-border-width: 2;">
+               <font>
+                  <Font size="22.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+            <TextField fx:id="txtF_NumFights" alignment="CENTER" layoutX="451.0" layoutY="99.0" onKeyPressed="#handleTextFieldAction" prefHeight="50.0" prefWidth="500.0" promptText="Enter Number Of Fights Here" style="-fx-text-inner-color: #ffffff; -fx-background-color: #3e3e40; -fx-background-radius: 30; -fx-border-color: #939393; -fx-border-radius: 30; -fx-border-width: 2;">
+               <font>
+                  <Font size="22.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+            <TextField fx:id="txtF_MaxHp" alignment="CENTER" layoutX="451.0" layoutY="448.0" onKeyPressed="#handleTextFieldAction" prefHeight="50.0" prefWidth="500.0" promptText="Enter Max Hp Here" style="-fx-text-inner-color: #ffffff; -fx-background-color: #3e3e40; -fx-background-radius: 30; -fx-border-color: #939393; -fx-border-radius: 30; -fx-border-width: 2;">
+               <font>
+                  <Font size="22.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+            <Button fx:id="btn_StartBattle" layoutX="802.0" layoutY="522.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="60.0" prefWidth="185.0" style="-fx-background-radius: 30; -fx-background-color: #4aaf76;" text="Start Battle!">
+               <font>
+                  <Font size="27.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <ScrollPane fx:id="scrl_petSetup" layoutX="32.0" layoutY="101.0" stylesheets="@style.css">
+               <content>
+                  <VBox fx:id="lstV_petSetup" prefHeight="397.0" prefWidth="376.0" spacing="20.0" style="-fx-background-radius: 30;" styleClass="vbox">
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </VBox>
+               </content>
+            </ScrollPane>
+            <TextField fx:id="txtF_seed" alignment="CENTER" layoutX="451.0" layoutY="276.0" onAction="#handleButtonAction" onKeyPressed="#handleTextFieldAction" prefHeight="50.0" prefWidth="500.0" promptText="Enter Seed For Fight Here" style="-fx-text-inner-color: #ffffff; -fx-background-color: #3e3e40; -fx-background-radius: 30; -fx-border-color: #939393; -fx-border-radius: 30; -fx-border-width: 2;">
+               <font>
+                  <Font size="22.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="TEXT" />
+               </cursor>
+            </TextField>
+            <Button fx:id="btn_MakePets" layoutX="325.0" layoutY="48.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="105.0" style="-fx-background-radius: 30; -fx-background-color: #4aaf76;" text="Generate Pets">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </AnchorPane>
+      <AnchorPane fx:id="panel_fightScreen" minHeight="600.0" minWidth="1000.0" style="-fx-background-color: #151516; -fx-border-color: #c0c0c0; -fx-border-width: 5; -fx-border-style: solid;">
+         <children>
+            <ProgressBar fx:id="pBar_enemyHealth" layoutX="240.0" layoutY="112.0" prefHeight="40.0" prefWidth="600.0" progress="1.0" rotate="180.0" style="-fx-accent: #4aaf76;">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </ProgressBar>
+            <ImageView fx:id="image_currentPet" fitHeight="135.0" fitWidth="135.0" layoutX="13.0" layoutY="227.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="10.0">
+               <image>
+                  <Image url="@../Resources/speed1.gif" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </ImageView>
+            <Label fx:id="label_enemyPetHp" layoutX="198.0" layoutY="113.0" text="HP " textFill="WHITE">
+               <font>
+                  <Font size="26.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </Label>
+            <TabPane layoutX="14.0" layoutY="369.0" prefHeight="215.0" prefWidth="560.0" style="-fx-background-color: #3e3e40;" tabClosingPolicy="UNAVAILABLE">
+               <tabs>
+                  <Tab text="Moves">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="171.0" prefWidth="291.0">
+                           <children>
+                              <Pane fx:id="panel_skillChoice" prefHeight="175.0" prefWidth="560.0" style="-fx-background-color: #3e3e40;" AnchorPane.bottomAnchor="-3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Button fx:id="btn_rockThrow" layoutX="190.0" layoutY="3.0" mnemonicParsing="false" onAction="#handleMove" prefHeight="35.0" prefWidth="180.0" style="-fx-background-radius: 30; -fx-background-color: #151516; -fx-border-color: #939393; -fx-border-radius: 30;" text="Rock Throw" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <ImageView fx:id="imgBtn_rock" fitHeight="35.0" fitWidth="35.0" layoutX="195.0" layoutY="3.0" onMouseClicked="#handleImageButtonAction" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Resources/rockThrow.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Button fx:id="btn_scissorPoke" layoutX="379.0" layoutY="78.0" mnemonicParsing="false" onAction="#handleMove" prefHeight="35.0" prefWidth="180.0" style="-fx-background-radius: 30; -fx-background-color: #151516; -fx-border-color: #939393; -fx-border-radius: 30;" text="Scissor Poke" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <ImageView fx:id="imgBtn_scissors" fitHeight="35.0" fitWidth="35.0" layoutX="385.0" layoutY="78.0" onMouseClicked="#handleImageButtonAction" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Resources/scissorPoke.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Button fx:id="btn_shootTheMoon" layoutX="189.0" layoutY="78.0" mnemonicParsing="false" onAction="#handleMove" prefHeight="35.0" prefWidth="180.0" style="-fx-background-radius: 30; -fx-background-color: #151516; -fx-border-color: #939393; -fx-border-radius: 30;" text="Shoot the Moon" textAlignment="CENTER" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <ImageView fx:id="imgBtn_moon" fitHeight="35.0" fitWidth="34.0" layoutX="189.0" layoutY="78.0" onMouseClicked="#handleImageButtonAction" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Resources/shootTheMoon.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Button fx:id="btn_RoF" layoutX="191.0" layoutY="146.0" mnemonicParsing="false" onAction="#handleMove" prefHeight="35.0" prefWidth="180.0" style="-fx-background-radius: 30; -fx-background-color: #151516; -fx-border-color: #939393; -fx-border-radius: 30;" text="Reversal of Fortune" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <ImageView fx:id="imgBtn_reversal" fitHeight="35.0" fitWidth="35.0" layoutX="190.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Resources/reversalOfFortune.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Button fx:id="btn_paperCut" layoutX="1.0" layoutY="77.0" mnemonicParsing="false" onAction="#handleMove" prefHeight="35.0" prefWidth="180.0" style="-fx-background-radius: 30; -fx-background-color: #151516; -fx-border-color: #939393; -fx-border-radius: 30;" text="Paper Cut" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <ImageView fx:id="imgBtn_paper" fitHeight="35.0" fitWidth="37.0" layoutX="12.0" layoutY="78.0" onMouseClicked="#handleImageButtonAction" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../Resources/paperCut.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="Settings">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Pane prefHeight="170.0" prefWidth="424.0" style="-fx-background-color: #3e3e40;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Button fx:id="btn_ExitMidGame" layoutX="30.0" layoutY="96.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="60.0" prefWidth="500.0" style="-fx-background-radius: 30; -fx-background-color: #151516;" text="Exit Game" textFill="WHITE">
+                                       <font>
+                                          <Font size="26.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Button fx:id="btn_NewGame" layoutX="30.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="60.0" prefWidth="500.0" style="-fx-background-color: #4aaf76; -fx-background-radius: 30;" text="New Game" textFill="WHITE">
+                                       <font>
+                                          <Font size="26.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+               </tabs>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </TabPane>
+            <TextArea fx:id="textArea_output" layoutX="582.0" layoutY="370.0" prefHeight="215.0" prefWidth="404.0" />
+            <Label fx:id="label_currentPlayerName" layoutX="157.0" layoutY="218.0" prefHeight="38.0" prefWidth="759.0" text="Player Name" textFill="WHITE">
+               <font>
+                  <Font size="26.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </Label>
+            <Label fx:id="label_enemyPetName" alignment="CENTER_RIGHT" layoutX="64.0" layoutY="72.0" prefWidth="778.0" text="Pet Name" textFill="WHITE">
+               <font>
+                  <Font size="26.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </Label>
+            <Label fx:id="label_currentPlayerHp" layoutX="762.0" layoutY="321.0" text="HP" textFill="WHITE">
+               <font>
+                  <Font size="26.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </Label>
+            <Label fx:id="label_currentPetName" layoutX="157.0" layoutY="286.0" prefHeight="38.0" prefWidth="787.0" text="Pet Name" textFill="WHITE">
+               <font>
+                  <Font size="26.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </Label>
+            <Label fx:id="label_enemyPlayerName" alignment="CENTER_RIGHT" layoutX="62.0" layoutY="8.0" prefHeight="38.0" prefWidth="778.0" text="Player Name" textFill="WHITE">
+               <font>
+                  <Font size="26.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </Label>
+            <ProgressBar fx:id="pBar_playerHealth" layoutX="157.0" layoutY="320.0" prefHeight="40.0" prefWidth="600.0" progress="1.0" style="-fx-accent: #4aaf76;">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </ProgressBar>
+            <ImageView fx:id="image_enemyPet" fitHeight="135.0" fitWidth="135.0" layoutX="852.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+               <image>
+                  <Image url="@../Resources/intel2.gif" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </ImageView>
+         </children>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+      </AnchorPane>
+		<AnchorPane fx:id="panel_IntroScreen" minHeight="600.0" minWidth="1000.0" style="-fx-background-color: #151516; -fx-border-color: #939393; -fx-border-width: 5; -fx-border-style: solid;">
+			<children>
+				<Button fx:id="btn_ExitGame" layoutX="385.0" layoutY="381.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="48.0" prefWidth="232.0" style="-fx-background-color: #3e3e40; -fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #939393; -fx-border-width: 3;" text="Exit Game" textFill="WHITE">
+					<font>
+						<Font size="26.0" />
+					</font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <Bloom threshold="0.86" />
+               </effect>
+				</Button>
+				<Label layoutX="288.0" layoutY="157.0" prefHeight="131.0" prefWidth="424.0" text="Battle Pets" textAlignment="CENTER" textFill="#939393">
+					<font>
+						<Font size="90.0" />
+					</font>
+               <effect>
+                  <Glow level="1.0" />
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+				</Label>
+				<Button fx:id="btn_StartGame" layoutX="354.0" layoutY="297.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="35.0" prefWidth="293.0" style="-fx-background-color: #3e3e40; -fx-background-radius: 30; -fx-border-radius: 30; -fx-border-color: #939393; -fx-border-width: 3;" text="Start Game" textFill="WHITE">
+					<font>
+						<Font size="26.0" />
+					</font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <effect>
+                  <Bloom threshold="0.86" />
+               </effect>
+				</Button>
+			</children>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+		</AnchorPane>
+	</children>
+</AnchorPane>
